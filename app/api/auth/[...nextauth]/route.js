@@ -6,7 +6,7 @@ import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
 
-export const authOptions = {
+const authOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -19,7 +19,7 @@ export const authOptions = {
           throw new Error("Missing credentials");
         }
 
-        // Try to find user in the User table
+        // Try to find user in User table
         let user = await prisma.user.findUnique({
           where: { email: credentials.email },
         });
@@ -78,7 +78,6 @@ export const authOptions = {
 
     async signIn({ user, account }) {
       if (account?.provider === "google") {
-        // Check if user exists in User table
         const existingUser = await prisma.user.findUnique({
           where: { email: user.email },
         });
