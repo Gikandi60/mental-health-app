@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { FiMessageSquare, FiBarChart2, FiShield, FiHeart } from 'react-icons/fi';
 
 type FeatureCardProps = {
-  icon: JSX.Element;
+  icon: React.ReactNode;
   title: string;
   desc: string;
 };
