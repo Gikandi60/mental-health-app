@@ -3,11 +3,18 @@
 import { useEffect, useState } from 'react';
 import { FiUsers, FiMessageSquare, FiClock } from 'react-icons/fi';
 
+interface StatCardProps {
+  title: string;
+  value: number;
+  change: string;
+  icon: React.ReactNode;
+}
+
 export default function AnalyticsPage() {
   const [stats, setStats] = useState({
     userCount: 0,
     conversationCount: 0,
-    sessionCount: 0, // <-- changed from userRetention
+    sessionCount: 0,
   });
 
   useEffect(() => {
@@ -19,7 +26,7 @@ export default function AnalyticsPage() {
         setStats({
           userCount: data.userCount || 0,
           conversationCount: data.conversationCount || 0,
-          sessionCount: data.sessionCount || 0, // <-- expects sessionCount from API
+          sessionCount: data.sessionCount || 0,
         });
       } catch (e) {
         console.error('Failed to fetch stats:', e);
@@ -57,7 +64,7 @@ export default function AnalyticsPage() {
   );
 }
 
-function StatCard({ title, value, change, icon }) {
+function StatCard({ title, value, change, icon }: StatCardProps) {
   return (
     <div className="bg-white rounded-lg shadow p-6 flex items-center">
       <div className="bg-blue-100 p-3 rounded-full text-blue-600 mr-4">
