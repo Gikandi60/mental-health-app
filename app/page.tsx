@@ -1,5 +1,20 @@
 import Link from 'next/link';
-import { FiMessageSquare, FiBarChart2, FiShield, FiHeart,  } from 'react-icons/fi';
+import { FiMessageSquare, FiBarChart2, FiShield, FiHeart } from 'react-icons/fi';
+
+type FeatureCardProps = {
+  icon: JSX.Element;
+  title: string;
+  desc: string;
+};
+
+type MotivationCardProps = {
+  quote: string;
+};
+
+type ResourceCardProps = {
+  title: string;
+  desc: string;
+};
 
 export default function Home() {
   return (
@@ -133,7 +148,7 @@ export default function Home() {
 }
 
 // Components
-function FeatureCard({ icon, title, desc }) {
+function FeatureCard({ icon, title, desc }: FeatureCardProps) {
   return (
     <div className="bg-white p-6 rounded-xl shadow-md text-center">
       <div className="w-12 h-12 mx-auto flex items-center justify-center bg-blue-100 rounded-full mb-4">
@@ -145,7 +160,7 @@ function FeatureCard({ icon, title, desc }) {
   );
 }
 
-function MotivationCard({ quote }) {
+function MotivationCard({ quote }: MotivationCardProps) {
   return (
     <div className="bg-white p-6 rounded-lg shadow text-lg font-semibold text-blue-700">
       <FiHeart className="mx-auto mb-4 text-red-500 w-6 h-6" />
@@ -154,7 +169,7 @@ function MotivationCard({ quote }) {
   );
 }
 
-function ResourceCard({ title, desc }) {
+function ResourceCard({ title, desc }: ResourceCardProps) {
   return (
     <div className="bg-blue-50 p-5 rounded-lg shadow border-l-4 border-blue-600">
       <h4 className="text-lg font-bold text-blue-800 mb-2">{title}</h4>
