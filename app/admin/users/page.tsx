@@ -31,6 +31,7 @@ export default function UserManagementPage() {
       const data = await res.json();
       setUsers(data);
       setShowUsers(true); // show table
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError(err.message || 'Error fetching users');
     } finally {
@@ -54,6 +55,7 @@ export default function UserManagementPage() {
       setUsers(prev => prev.filter(user => user.id !== id));
       setSuccess('User deleted successfully.');
       setTimeout(() => setSuccess(''), 3000);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       console.error(err);
       setError(err.message || 'Failed to delete user');
